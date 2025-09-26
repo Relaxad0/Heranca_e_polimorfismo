@@ -26,7 +26,6 @@ class Carro extends Veiculo {
         System.out.println("Ar-condicionado ligado!");
     }
 
-    @Override
     public void imprimirInformacoes() {
         System.out.println("Carro -> Modelo: " + modelo + ", Ano: " + ano +
                            ", Portas: " + portas + ", Combustível: " + combustivel);
@@ -47,14 +46,12 @@ class Moto extends Veiculo {
         System.out.println("Moto empinando!");
     }
 
-    @Override
     public void imprimirInformacoes() {
         System.out.println("Moto -> Modelo: " + modelo + ", Ano: " + ano +
                            ", Cilindradas: " + cilindradas + ", Partida Elétrica: " + partidaEletrica);
     }
 }
 
-// 2. Hierarquia de Animais + 5. Sons + 8. Lista de Sons
 class Animal {
     protected String nome;
 
@@ -72,7 +69,6 @@ class Mamifero extends Animal {
         super(nome);
     }
 
-    @Override
     public void emitirSom() {
         System.out.println(nome + " diz: 'grrrr'");
     }
@@ -83,7 +79,6 @@ class Ave extends Animal {
         super(nome);
     }
 
-    @Override
     public void emitirSom() {
         System.out.println(nome + " diz: 'piu piu'");
     }
@@ -94,13 +89,11 @@ class Peixe extends Animal {
         super(nome);
     }
 
-    @Override
     public void emitirSom() {
         System.out.println(nome + " diz: 'blub blub'");
     }
 }
 
-// 3. Conta Bancária + 9. Aplicação de Juros
 class ContaBancaria {
     protected double saldo;
     protected String numeroConta;
@@ -127,7 +120,6 @@ class ContaBancaria {
     }
 
     public void aplicarJuros() {
-        // implementação genérica
     }
 }
 
@@ -136,7 +128,6 @@ class ContaCorrente extends ContaBancaria {
         super(numeroConta, saldo);
     }
 
-    @Override
     public void aplicarJuros() {
         saldo += saldo * 0.15;
     }
@@ -147,13 +138,11 @@ class ContaPoupanca extends ContaBancaria {
         super(numeroConta, saldo);
     }
 
-    @Override
     public void aplicarJuros() {
         saldo += saldo * 0.065;
     }
 }
 
-// 6. Calculadora (Polimorfismo por Sobrecarga)
 class Calculadora {
     public int soma(int a, int b) { return a + b; }
     public double soma(double a, double b) { return a + b; }
@@ -165,7 +154,6 @@ class Calculadora {
     public double divisao(double a, double b) { return a / b; }
 }
 
-// 7. Formas Geométricas
 abstract class FormaGeometrica {
     public abstract double calcularArea();
     public abstract double calcularPerimetro();
@@ -174,26 +162,25 @@ abstract class FormaGeometrica {
 class Circulo extends FormaGeometrica {
     private double raio;
     public Circulo(double raio) { this.raio = raio; }
-    @Override public double calcularArea() { return Math.PI * raio * raio; }
-    @Override public double calcularPerimetro() { return 2 * Math.PI * raio; }
+    public double calcularArea() { return Math.PI * raio * raio; }
+    public double calcularPerimetro() { return 2 * Math.PI * raio; }
 }
 
 class Retangulo extends FormaGeometrica {
     private double largura, altura;
     public Retangulo(double largura, double altura) { this.largura = largura; this.altura = altura; }
-    @Override public double calcularArea() { return largura * altura; }
-    @Override public double calcularPerimetro() { return 2 * (largura + altura); }
+    public double calcularArea() { return largura * altura; }
+    public double calcularPerimetro() { return 2 * (largura + altura); }
 }
 
 class Triangulo extends FormaGeometrica {
     private double base, altura;
     public Triangulo(double base, double altura) { this.base = base; this.altura = altura; }
-    @Override public double calcularArea() { return (base * altura) / 2; }
-    @Override public double calcularPerimetro() { return 3 * base; } // simplificado (equilátero)
+    public double calcularArea() { return (base * altura) / 2; }
+    public double calcularPerimetro() { return 3 * base; }
 }
 
-// 10. Interface Autenticável
-interface Autenticavel {
+    interface Autenticavel {
     boolean autenticar(String senha);
 }
 
@@ -208,7 +195,6 @@ class Usuario implements Autenticavel {
 
     public String getNome() { return nome; }
 
-    @Override
     public boolean autenticar(String senha) {
         return this.senha.equals(senha);
     }
@@ -224,16 +210,11 @@ class Administrador implements Autenticavel {
     }
 
     public String getNome() { return nome; }
-
-    @Override
     public boolean autenticar(String senha) {
         return this.senha.equals(senha);
     }
 }
 
-// =========================================
-// MAIN APLICADA (classe pública - arquivo Main.java)
-// =========================================
 public class herancaEPoliformismo {
     public static void main(String[] args) {
         System.out.println("=== TESTE VEÍCULOS ===");
